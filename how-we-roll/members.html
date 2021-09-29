@@ -1,19 +1,4 @@
 <!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="UTF-8"> <!--basic symboler/bokstaver-->
-        <link rel="stylesheet" href="members.css">
-        <link rel="stylesheet" href="main.css">
-        <title>Medlemmer</title>
-    </head>
-    <body>
-    <h1>Medlemmer - Gruppe 7A</h1>
-    </body>
-    <div class="root">
-
-    </div>
-
 <!--
 lage tilbake knapp - til index
     - Ligger i en meny på venstre side
@@ -21,5 +6,35 @@ lage tilbake knapp - til index
 
 bokser som inneholder medlemsinformasjon
 -->
+<html lang="en">
 
+    <head>
+        <meta charset="UTF-8"> <!--basic symboler/bokstaver-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            hwr-rapport
+        </title>
+    </head>
+    <body>
+    <script>
+        fetch('https://bacit.info/hwr/xx-xx.json')
+            .then(response => response.json())
+            .then(data => console.log(data));
+
+        fetch('https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json')
+            .then(response => response.json())
+            .then(data => console.log(data));
+
+
+        <!--
+        bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json
+                        en del       -           en del
+          -->
+    </script>
+
+
+
+
+    </body>
 </html>
