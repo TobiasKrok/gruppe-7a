@@ -17,21 +17,45 @@ bokser som inneholder medlemsinformasjon
         </title>
     </head>
     <body>
-    <script>
-        fetch('https://bacit.info/hwr/xx-xx.json')
-            .then(response => response.json())
-            .then(data => console.log(data));
+    <h1>
+        visualisering av fetch() json filer
+    </h1>
+    <!-- funker ikke -->
+ <div id="mydata"></div>
 
-        fetch('https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json')
-            .then(response => response.json())
-            .then(data => console.log(data));
+
+        <script>
+            <!-- funker ikke -->
+            fetch('https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json')
+                .then(response => response.json())
+                .then(data => console.log(data));
+
+            <!-- hvem vet om denne funker? ikke jeg -->
+            fetch('https://bacit.info/hwr/20210929100622-6a9dae9bf58a61d25fb83a0fd32e96b7.json')
+                .then(function (response) {
+                    return response.json();})
+                .then(function (data) {
+                    appendData(data);})
+                .catch(function (err) {
+                    console.log(err);});
+
+            function appendData(data) {
+                var mainContainer = document.getElementById("myData");
+                for (var i = 0; i < data.length; i++) {
+                    var div = document.createElement("div");
+                    div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+                    mainContainer.appendChild(div);
+                }
+            }
 
 
         <!--
         bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json
                         en del       -           en del
           -->
-    </script>
+        </script>
+
+
 
 
 
