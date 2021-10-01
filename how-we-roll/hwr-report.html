@@ -16,9 +16,6 @@ bokser som inneholder medlemsinformasjon
             How We Roll - Report
         </title>
         <style>
-            .test {
-                color: red;
-            }
         </style>
     </head>
     <body>
@@ -37,8 +34,24 @@ bokser som inneholder medlemsinformasjon
             .then(res => data.push(res)) )
         ).then(() => {
             const html = `<div class="test">
-                
-                <h1> ${data[0].data01} </h1></div>
+                <table>
+                    <tr>
+                        <th> Navn </th>
+                        <th> Stilling </th>
+                        <th> Natteravn/Morgenfugl <th>
+                    </tr>
+                    <tr>
+                    ${data.map( members=> `
+                        <td> 
+                         ${members.data01}
+                        </td>
+                        <td>
+                        ${members.dorn}
+                        </td>
+                        `)}
+                    </tr>
+                    </table>
+                </div>
                 
                 `;
             console.log(html)
