@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+lage tilbake knapp - til index
+    - Ligger i en meny på venstre side
+
+
+bokser som inneholder medlemsinformasjon
+-->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8"> <!--basic symboler/bokstaver-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            How We Roll - Report
+        </title>
+        <style>
+            .test {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+ 
+    <script>
+        const data = [] // Array av JSON objects
+        const links = [
+       "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
+       "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
+       "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json"
+        ]
+        // Promise.all venter på at alle
+        Promise.all(
+            links.map(link => fetch(link)
+            .then(res => res.json())
+            .then(res => data.push(res)) )
+        ).then(() => {
+            const html = `<div class="test">
+                
+                <h1> ${data[0].data01} </h1></div>
+                
+                `;
+            console.log(html)
+            const template = document.createElement('template')
+            template.innerHTML = html
+            document.body.appendChild(template.content.firstChild)
+    
+        })
+    </script>
+
+      <!--
+        bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json
+                        en del       -           en del
+          -->
+
+        </body>
+
+</html>
