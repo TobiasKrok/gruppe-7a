@@ -10,9 +10,6 @@
         body {
             background-color: #0a1929;
             display: flex;
-            
-                
-            
         
         }
 
@@ -24,30 +21,11 @@
     flex-direction: column;
     color: white;
     position: relative;
-    left: 25%
-    
+
     
       }
       .Menu-Bar {
           width: 100px;
-          border: 5px solid white;
-          padding: 50px;
-          margin: 10px;
-          height: 200px;
-          
-
-          
-        
-          
-      }
-      .results {
-          color: white;
-          position: relative;
-          top: 500px;
-        
-
-         
-      }
     
       
     </style>
@@ -76,100 +54,10 @@
         </p>
 
         <p>
-            <label for="Sammen">Jobbe med det sammen</label>
             <input type="range" id="Sammen" name="Sammen" value="50">
             <label for="Alene">Jobbe med det alene</label>
         </p>
 
         <p>
-            <label for="Pågående tilbakemeldinger">Foretrekker pågående tilbakemeldinger</label>
-            <input type="range" id="Feedback" name="Feedback" value="50">
-            <label for="Tilbakemelding etter">Tilbakemeldinger etter prosjekt eller arbeid</label>
-        </p>
-
-        <p>
-            <label>Hvis jeg er uenig med en kollega, uttaler jeg meg:
-                <select name="numb">
-                    <option value="Zero">0</option>
-                    <option value="ten">1</option>
-                    <option value="twenty">2</option>
-                    <option value="Thirty">3</option>
-                    <option value="Forthy">4</option>
-                    <option value="Fifty">5</option>
-                    <option value="Sixty">6</option>
-                    <option value="Seventy">7</option>
-                    <option value="Eighty">8</option>
-                    <option value="Ninety">9</option>
-                    <option value="One-hundred">10</option>
-
-                 
-                </select>
-            </label>
-        </p>
-
-        <p>
-            (0 = svært uenig, 10 = meget enig)
-        </p>
-
-        <p>
-            asdasfasd
-        </p>
-
-
-
-
-
-
-
-
-
-
-
-<input type="submit" value="Submit">
-    </form>
-    </div>
-    <div class="results">
-        <h2>Form Data</h2>
-        <pre></pre>
-
-    </div>
-    
-<script> 
-        // From https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch (seen 2021-09-27)
-        // Example POST method implementation using fetch:
-        async function postData(url = '', data = {})
-        {
-            // Default options are marked with *
-        const response = await fetch(url, {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'cors', // no-cors, *cors, same-origin
-                cache: 'no-cache', // *default, no-cache, reload, force-cache,only-if-cached
-                credentials: 'same-origin', // include, *same-origin, omit
-                headers: {
-                    'Content-Type': 'application/json',
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                redirect: 'follow', // manual, *follow, error
-                referrerPolicy: 'no-referrer', // no-referrer,*no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                body: JSON.stringify(data) // body data type must match"Content-Type"header
-            });
-        return response.json(); // parses JSON response into native JavaScriptobjects
-        }
-
-            function handleSubmit(event) {
-                event.preventDefault();
-                const data = new FormData(event.target);
-                const formJSON = Object.fromEntries(data.entries());
-                const results = document.querySelector('.results pre');
-                postData('https://bacit.info/', formJSON)
-                    .then(data => {
-                    results.innerText = JSON.stringify(data, null, 2);
-                    });
-            }
-            const form = document.querySelector('form');
-            form.addEventListener('submit', handleSubmit);
-        </script>
-    
-</body>
 
 </html>
