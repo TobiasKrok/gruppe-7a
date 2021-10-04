@@ -20,12 +20,18 @@ bokser som inneholder medlemsinformasjon
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
         h1,h2 {
             color: white;
             font-family: Roboto, 'sans-serif';
         }
-
+        .table-overview {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+        }
       table {
         border-collapse: collapse;
         margin: 25px 0;
@@ -87,19 +93,46 @@ bokser som inneholder medlemsinformasjon
         if (canvas.getContext) {
           var ctx = canvas.getContext('2d');
 
+          const members = [
+            {
+              name: "Tobias",
+              morgenfugl:30,
+              collab: 50
+            },
+            {
+              name: "Fredrik",
+              morgenfugl: 65,
+              collab: 80
+            }
+          ]
 
-          // en jævla strek
+          for(member of members) {
+             // en jævla strek
+          const lineStart = 200
+          const lineEnd = 400
           ctx.beginPath();
-          ctx.moveTo(200, 200);   // Move pen to bottom-left corner
-          ctx.lineTo(400, 200);   // Line to top corner
+          ctx.moveTo(lineStart, 200);   // Move pen to bottom-left corner
+          ctx.lineTo(lineEnd, 200);   // Line to top corner
           ctx.lineWidth = 4;
           ctx.stroke();
 
-          // sirkel på strek
-          var circle = new Path2D();
-          circle.arc(300, 200, 5, 0, 2 * Math.PI);
-          ctx.fillStyle = "red"
-          ctx.fill(circle);
+          // Morgenfugl 
+          members.map(member => {
+            var circle = new Path2D();
+            const pos = lineStart + member.morgenfugl * 2
+            circle.arc(pos, 200, 5, 0, 2 * Math.PI);
+            ctx.fillStyle = "red"
+            ctx.fill(circle);
+          })
+          members.map(member => {
+            var circle = new Path2D();
+            const pos = lineStart + member.collab * 2
+            circle.arc(pos, 200, 5, 0, 2 * Math.PI);
+            ctx.fillStyle = "red"
+            ctx.fill(circle);
+          })
+          }
+         
 
 
 
