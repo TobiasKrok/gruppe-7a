@@ -78,11 +78,38 @@ bokser som inneholder medlemsinformasjon
         )
       ).then(() => {
         drawHwrTable()
-        
+        draw()
       });
 
 
-      const drawHwrTable = () => {
+      function draw() {
+        var canvas = document.getElementById('myCanvas');
+        if (canvas.getContext) {
+          var ctx = canvas.getContext('2d');
+
+
+          // en jævla strek
+          ctx.beginPath();
+          ctx.moveTo(200, 200);   // Move pen to bottom-left corner
+          ctx.lineTo(400, 200);   // Line to top corner
+          ctx.lineWidth = 4;
+          ctx.stroke();
+
+          // sirkel på strek
+          var circle = new Path2D();
+          circle.arc(300, 200, 5, 0, 2 * Math.PI);
+          ctx.fillStyle = "red"
+          ctx.fill(circle);
+
+
+
+
+
+
+        }
+      }
+
+          const drawHwrTable = () => {
         const html = `<div class="table-overview">
             <h2> Our reports </h2>
                 <table>
@@ -116,6 +143,7 @@ bokser som inneholder medlemsinformasjon
                     `
                     )}
                     </table>
+                    <canvas id="myCanvas" width="600" height="800"></canvas>
                 </div>
                 
                 `;
