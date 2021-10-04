@@ -14,24 +14,25 @@ bokser som inneholder medlemsinformasjon
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>How We Roll - Report</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-        body {
-            background-color: #0a1929;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        h1,h2 {
-            color: white;
-            font-family: Roboto, 'sans-serif';
-        }
-        .table-overview {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+      body {
+        background-color: #0a1929;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h1,
+      h2 {
+        color: white;
+        font-family: Roboto, "sans-serif";
+      }
+      .table-overview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
       table {
         border-collapse: collapse;
         margin: 25px 0;
@@ -64,11 +65,22 @@ bokser som inneholder medlemsinformasjon
     </style>
   </head>
   <body>
-<h1>How We Roll Report</h1>
+    <h1>How We Roll Report</h1>
 
     <script>
-
-
+      // Colors to use when generating circles for visual representation of data
+      const colors = [
+        "#26fcd5",
+        "#fc21ea",
+        "#80FF00",
+        "#fc9a0f",
+        "#FF0000",
+        "#eddc1a",
+        "#FF7575",
+        "#84ff00",
+        "#cb1ed4",
+        "#21becc",
+      ];
       const data = []; // Array av JSON objects
       const links = [
         "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
@@ -83,66 +95,98 @@ bokser som inneholder medlemsinformasjon
             .then((res) => data.push(res))
         )
       ).then(() => {
-        drawHwrTable()
-        draw()
+        drawHwrTable();
+        draw();
       });
+      const lineStart = 100;
+      const lineEnd = 500;
 
+      const drawCirles = (value, y, name, textOnTop, color, ctx) => {
+        var circle = new Path2D();
+        const posX = lineStart + value * 4;
+        circle.arc(posX, y, 5, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill(circle);
+        ctx.font = "12px Comic Sans MS";
+        ctx.fillStyle = color;
+        ctx.textAlign = "center";
+        const textPosY = textOnTop ? y + 17 : y - 10;
+        ctx.fillText(name, posX - 2, textPosY);
+      };
 
+      const drawLine = (y, ctx) => {
+        ctx.beginPath();
+        ctx.moveTo(lineStart, y); // Move pen to bottom-left corner
+        ctx.lineTo(lineEnd, y); // Line to top corner
+        ctx.lineWidth = 4;
+        ctx.fillStyle = "red";
+        ctx.stroke();
+      };
       function draw() {
-        var canvas = document.getElementById('myCanvas');
+        let canvas = document.getElementById("myCanvas");
         if (canvas.getContext) {
-          var ctx = canvas.getContext('2d');
+          ctx = canvas.getContext("2d");
 
           const members = [
             {
               name: "Tobias",
-              morgenfugl:30,
-              collab: 50
+              morgenfugl: 95,
+              collab: 50,
+            },
+            {
+              name: "Tobias",
+              morgenfugl: 15,
+              collab: 50,
+            },
+            {
+              name: "Tobias",
+              morgenfugl: 45,
+              collab: 50,
+            },
+            {
+              name: "Tobias",
+              morgenfugl: 75,
+              collab: 50,
+            },
+            {
+              name: "Tobias",
+              morgenfugl: 35,
+              collab: 50,
+            },
+            {
+              name: "Tobias",
+              morgenfugl: 75,
+              collab: 50,
             },
             {
               name: "Fredrik",
-              morgenfugl: 65,
-              collab: 80
-            }
-          ]
-
-          for(member of members) {
-             // en jævla strek
-          const lineStart = 200
-          const lineEnd = 400
-          ctx.beginPath();
-          ctx.moveTo(lineStart, 200);   // Move pen to bottom-left corner
-          ctx.lineTo(lineEnd, 200);   // Line to top corner
-          ctx.lineWidth = 4;
-          ctx.stroke();
-
-          // Morgenfugl 
-          members.map(member => {
-            var circle = new Path2D();
-            const pos = lineStart + member.morgenfugl * 2
-            circle.arc(pos, 200, 5, 0, 2 * Math.PI);
-            ctx.fillStyle = "red"
-            ctx.fill(circle);
-          })
-          members.map(member => {
-            var circle = new Path2D();
-            const pos = lineStart + member.collab * 2
-            circle.arc(pos, 200, 5, 0, 2 * Math.PI);
-            ctx.fillStyle = "red"
-            ctx.fill(circle);
-          })
+              morgenfugl: 100,
+              collab: 80,
+            },
+          ];
+          const morgenfuglLineY = 200;
+          const collablLineY = 300;
+          drawLine(morgenfuglLineY, ctx);
+          drawLine(collablLineY, ctx);
+          let count = 0;
+          for (member of members) {
+            const isEven = count % 2 == 0;
+            const color = colors[count]
+            drawCirles(
+              member.morgenfugl,
+              morgenfuglLineY,
+              member.name,
+              isEven,
+              color,
+              ctx
+            );
+            drawCirles(member.collab, collablLineY, member.name,isEven,color, ctx);
+            count++;
           }
-         
-
-
-
-
-
-
         }
       }
 
-          const drawHwrTable = () => {
+      const drawHwrTable = () => {
         const html = `<div class="table-overview">
             <h2> Our reports </h2>
                 <table>
@@ -184,7 +228,7 @@ bokser som inneholder medlemsinformasjon
         const template = document.createElement("template");
         template.innerHTML = html;
         document.body.appendChild(template.content.firstChild);
-      }
+      };
     </script>
 
     <!--
