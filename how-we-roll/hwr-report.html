@@ -7,66 +7,120 @@ lage tilbake knapp - til index
 bokser som inneholder medlemsinformasjon
 -->
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--basic symboler/bokstaver-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How We Roll - Report</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        body {
+            background-color: #0a1929;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1,h2 {
+            color: white;
+            font-family: Roboto, 'sans-serif';
+        }
 
-    <head>
-        <meta charset="UTF-8"> <!--basic symboler/bokstaver-->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>
-            How We Roll - Report
-        </title>
-        <style>
-        </style>
-    </head>
-    <body>
- 
+      table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px #009879;
+      }
+      table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+      }
+      table th,
+      table td {
+        padding: 12px 15px;
+        color: white;
+      }
+      table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+
+      table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+      }
+    </style>
+  </head>
+  <body>
+<h1>How We Roll Report</h1>
+
     <script>
-        const data = [] // Array av JSON objects
-        const links = [
-       "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
-       "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
-       "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json"
-        ]
-        // Promise.all venter på at alle
-        Promise.all(
-            links.map(link => fetch(link)
-            .then(res => res.json())
-            .then(res => data.push(res)) )
-        ).then(() => {
-            const html = `<div class="test">
+      const data = []; // Array av JSON objects
+      const links = [
+        "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
+        "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
+        "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
+      ];
+      // Promise.all venter på at alle
+      Promise.all(
+        links.map((link) =>
+          fetch(link)
+            .then((res) => res.json())
+            .then((res) => data.push(res))
+        )
+      ).then(() => {
+        const html = `<div class="table-overview">
+            <h2> Our reports </h2>
                 <table>
+                    <thead>
                     <tr>
                         <th> Navn </th>
                         <th> Stilling </th>
                         <th> Natteravn/Morgenfugl <th>
                     </tr>
+                    </thead>
+                    <tbody>
+                    ${data.map(
+                      (members) => `
                     <tr>
-                    ${data.map( members=> `
+                    
                         <td> 
                          ${members.data01}
                         </td>
                         <td>
                         ${members.dorn}
                         </td>
-                        `)}
+                        <td>
+                            mhm
+                        </td>
+                        <td>
+                            yes
+                        </td>
+                        
                     </tr>
+                    </tbody>
+                    `
+                    )}
                     </table>
                 </div>
                 
                 `;
-            console.log(html)
-            const template = document.createElement('template')
-            template.innerHTML = html
-            document.body.appendChild(template.content.firstChild)
-    
-        })
+        console.log(html);
+        const template = document.createElement("template");
+        template.innerHTML = html;
+        document.body.appendChild(template.content.firstChild);
+      });
     </script>
 
-      <!--
+    <!--
         bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json
                         en del       -           en del
           -->
-
-        </body>
-
+  </body>
 </html>
