@@ -17,52 +17,62 @@ bokser som inneholder medlemsinformasjon
             hwr-rapport
         </title>
     </head>
+    <style>
+        .menu {
+
+        }
+    </style>
     <body>
-        <h1>
-            info hwr - (lagring)
-        </h1>
-
-        <form>
-            <p><label for="data01">Data inn felt #1</label>
-                <input type="text" name="data01" id="data01" /></p>
-
-            <p><label for="data02">Data inn felt #2</label>
-                <input type="text" name="data02" id="data02" /></p>
-
-        <p>HowWeRoll-parametre:</p>
-
-        <p>
-            <!-- dorn - day or night -->
-            <label for="dorn">Morgenfugl</label>
-            <input type="range" id="dorn" name="dorn" value="50">
-            <label for="dorn">Nattugle</label>
-        </p>
-        <p>
-            <!-- cora - cooperate or alone -->
-            <label for="cora">Jobbe med det sammen</label>
-            <input type="range" id="cora" name="cora" value="50">
-            <label for="cora">Gå for seg selv og tenke</label>
-        </p>
-        <p>
-            <label>Please choose one of the numbers:
-                <select name="numb">
-                    <option value="ten">10</option>
-                    <option value="twenty">20</option>
-                    <option value="tirty" disabled>30</option>
-                    <option value="forty" >40</option>
-                </select>
-            </label>
-        </p>
-
-        <button type="submit">Gjør noe</button>
-    </form>
-
-    <div class="results">
-        <h2>Form Data</h2>
-        <pre></pre>
+        <div class="menu"></div>
+        <div class="form"> 
+            
+            <h1>
+                info hwr - (lagring)
+            </h1>
+    
+            <form>
+                <p><label for="data01">Fullt navn</label>
+                    <input type="text" name="name" id="name" placeholder="Fullt navn"/></p>
+    
+                <p><label for="stilling">Stilling</label>
+                    <input type="text" name="stilling" id="stilling" /></p>
+    
+            <p>HowWeRoll-parametre:</p>
+    
+            <p>
+                <!-- dorn - day or night -->
+                <label for="dorn">Morgenfugl</label>
+                <input type="range" id="dorn" name="dorn" value="50">
+                <label for="dorn">Nattugle</label>
+            </p>
+            <p>
+                <!-- cora - cooperate or alone -->
+                <label for="cora">Jobbe med det sammen</label>
+                <input type="range" id="cora" name="cora" value="50">
+                <label for="cora">Gå for seg selv og tenke</label>
+            </p>
+            <p>
+                <label>Please choose one of the numbers:
+                    <select name="numb">
+                        <option value="ten">10</option>
+                        <option value="twenty">20</option>
+                        <option value="tirty" disabled>30</option>
+                        <option value="forty" >40</option>
+                    </select>
+                </label>
+            </p>
+    
+            <button type="submit">Gjør noe</button>
+        </form>
     </div>
-
-    <script>  <!-- kopi script fra fetch-jsondata -->
+        <div class="results">
+            <h2>Form Data</h2>
+            <pre></pre>
+        </div>
+       
+       
+ <!-- kopi script fra fetch-jsondata -->
+    <script> 
         // From https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch (seen 2021-09-27)
         // Example POST method implementation using fetch:
         async function postData(url = '', data = {})
