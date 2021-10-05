@@ -85,10 +85,11 @@ bokser som inneholder medlemsinformasjon
         "#21becc",
       ];
       const data = []; // Array av JSON objects
+      // "trxid": "e5c4aed75488c868e5c45c54cb7b97a7"
       const links = [
         "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
         "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
-        "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
+        "https://bacit.info/hwr/20211005133045-e5c4aed75488c868e5c45c54cb7b97a7.json",
       ];
       // Promise.all venter på at alle promises returned av Fetch skal resolves før den fortsetter.
       Promise.all(
@@ -135,43 +136,6 @@ bokser som inneholder medlemsinformasjon
         ctx.fillText(endLabel, lineStart - 10, y);
         ctx.stroke();
       };
-      const members = [
-            {
-              name: "Tobias",
-              morgenfugl: 95,
-              collab: 70,
-            },
-            {
-              name: "Tobias",
-              morgenfugl: 15,
-              collab: 10,
-            },
-            {
-              name: "Tobias",
-              morgenfugl: 45,
-              collab: 50,
-            },
-            {
-              name: "Tobias",
-              morgenfugl: 75,
-              collab: 60,
-            },
-            {
-              name: "Tobias",
-              morgenfugl: 35,
-              collab: 30,
-            },
-            {
-              name: "Tobias",
-              morgenfugl: 75,
-              collab: 25,
-            },
-            {
-              name: "Fredrik",
-              morgenfugl: 100,
-              collab: 80,
-            },
-          ];
       function draw() {
         let canvas = document.getElementById("myCanvas");
         if (canvas.getContext) {
@@ -182,7 +146,7 @@ bokser som inneholder medlemsinformasjon
           drawLine(collablLineY, "Samarbeide","Jobbe alene", ctx);
           let count = 1;
 
-          for (member of members) {
+          for (member of data) {
             const textOnOp = count % 2 == 0;
             const color = colors[count];
             drawCirles(
@@ -203,7 +167,6 @@ bokser som inneholder medlemsinformasjon
             );
             count++;
           }
-          // morgenfugl og natteravn ved siden av linje 1
         }
       }
 
