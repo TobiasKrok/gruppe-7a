@@ -85,11 +85,13 @@ bokser som inneholder medlemsinformasjon
         "#21becc",
       ];
       const data = []; // Array av JSON objects
-      // "trxid": "e5c4aed75488c868e5c45c54cb7b97a7"
       const links = [
-        "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
-        "https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json",
-        "https://bacit.info/hwr/20211005133045-e5c4aed75488c868e5c45c54cb7b97a7.json",
+        "https://bacit.info/hwr/20211005141213-0413512fa0943a409f6cee6a07a9102e.json",
+        "https://bacit.info/hwr/20211005141309-3e6bd0147503d02633738e0b56ffc03a.json",
+        "https://bacit.info/hwr/20211005141331-758d0eb00c06f41301f15d49227469a0.json",
+        "https://bacit.info/hwr/20211005141449-50139bb47e501110b43ca2e4113adb1d.json"
+
+
       ];
       // Promise.all venter på at alle promises returned av Fetch skal resolves før den fortsetter.
       Promise.all(
@@ -111,7 +113,7 @@ bokser som inneholder medlemsinformasjon
         circle.arc(posX, y, 5, 0, 2 * Math.PI);
         ctx.fillStyle = color;
         ctx.fill(circle);
-        ctx.font = "12px Comic Sans MS";
+        ctx.font = "12px Roboto";
         ctx.fillStyle = color;
         ctx.textAlign = "center";
         const textPosY = textOnTop ? y + 17 : y - 10;
@@ -140,25 +142,37 @@ bokser som inneholder medlemsinformasjon
         let canvas = document.getElementById("myCanvas");
         if (canvas.getContext) {
           ctx = canvas.getContext("2d");
-          const morgenfuglLineY = 200;
+          const earlyBirdLineY = 200;
           const collablLineY = 300;
-          drawLine(morgenfuglLineY, "Morgenfugl", "Natteravn", ctx);
+          const feedbackLineY = 400
+          drawLine(earlyBirdLineY, "Morgenfugl", "Natteravn", ctx);
           drawLine(collablLineY, "Samarbeide","Jobbe alene", ctx);
+          drawLine(feedbackLineY, "Pågående feedback","Feedback når ferdig", ctx);
+
+
           let count = 1;
 
           for (member of data) {
             const textOnOp = count % 2 == 0;
             const color = colors[count];
             drawCirles(
-              member.morgenfugl,
-              morgenfuglLineY,
+              member.earlybird,
+              earlyBirdLineY,
               member.name,
               textOnOp,
               color,
               ctx
             );
             drawCirles(
-              member.collab,
+              member.feedback,
+              feedbackLineY,
+              member.name,
+              textOnOp,
+              color,
+              ctx
+            );
+            drawCirles(
+              member.together,
               collablLineY,
               member.name,
               textOnOp,
@@ -179,7 +193,13 @@ bokser som inneholder medlemsinformasjon
                     <tr>
                         <th> Navn </th>
                         <th> Stilling </th>
-                        <th> Natteravn/Morgenfugl <th>
+                        <th> Morgenfugl (100)</th>
+                        <th> Samarbeide(100) </th>
+                        <th> Pågående tilbakemeldinger(100) </th>
+                        <th> Deltakeraktivitet(10)</th>
+                        <th> Liker å diskutere(10)</th>
+                        <th> Sier ifra om uenig/(10)</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -188,24 +208,36 @@ bokser som inneholder medlemsinformasjon
                     <tr>
                     
                         <td> 
-                         ${members.data01}
+                         ${members.name}
                         </td>
                         <td>
-                        ${members.dorn}
+                        ${members.position}
+                        </td> 
+                        <td> 
+                         ${members.earlybird  }
+                        </td>
+        
+                        <td>
+                            ${members.together}
                         </td>
                         <td>
-                            mhm
+                            ${members.feedback}
                         </td>
                         <td>
-                            yes
+                            ${members.processes}
                         </td>
-                        
+                        <td>
+                            ${members.discussion}
+                        </td>
+                        <td>
+                            ${members.exspressive}
+                        </td>
                     </tr>
                     </tbody>
                     `
                     )}
                     </table>
-                    <canvas id="myCanvas" width="600" height="800"></canvas>
+                    <canvas id="myCanvas" width="600" height="1000"></canvas>
                 </div>
                 
                 `;
