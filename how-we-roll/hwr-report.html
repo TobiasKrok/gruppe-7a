@@ -2,16 +2,40 @@
 <!--
 lage tilbake knapp - til index
     - Ligger i en meny på venstre side
-
-    ang oddetall og partall på linja for å def oppe og nede ved navn(sirkel), er vi nødt
-    til å organisere arrayen fra misnt til størt ellers får vi at de kommer på samme linje uansett
-
-
 bokser som inneholder medlemsinformasjon
+
+lagt til slider data i head/ over canvas  --- og i canvas - fikser border+ ny info
+
+se 173 og 174 -- for videre inkorp
+++ shlirim
+      drawCirles(
+              member.motivasjon,
+              motivasjonLineY,
+              member.name,
+              textOnOp,
+              color,
+              ctx
+      );
+      drawCirles(
+              member.SamVilje,
+              SamViljeLineY,
+              member.name,
+              textOnOp,
+              color,
+              ctx
+
+      <td>
+      ${members.kommunikasjonsmetode}
+      </td>
+      <td>
+      ${members.Arbeidsmetode}
+      </td>
+
+
 -->
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <!--basic symboler/bokstaver-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,6 +53,11 @@ bokser som inneholder medlemsinformasjon
       h2 {
         color: white;
         font-family: Roboto, "sans-serif";
+      }
+      h3 {
+        color: white;
+        font-size: 300%;
+        font-family: Roboto;
       }
       .table-overview {
         display: flex;
@@ -89,8 +118,8 @@ bokser som inneholder medlemsinformasjon
         "https://bacit.info/hwr/20211005141213-0413512fa0943a409f6cee6a07a9102e.json",
         "https://bacit.info/hwr/20211005141309-3e6bd0147503d02633738e0b56ffc03a.json",
         "https://bacit.info/hwr/20211005141331-758d0eb00c06f41301f15d49227469a0.json",
-        "https://bacit.info/hwr/20211005141449-50139bb47e501110b43ca2e4113adb1d.json"
-
+        "https://bacit.info/hwr/20211005141449-50139bb47e501110b43ca2e4113adb1d.json",
+        "https://bacit.info/hwr/20211005145828-b85ddebc304c64b9d370ba85ea9bb106.json", // denne funker ikke
 
       ];
       // Promise.all venter på at alle promises returned av Fetch skal resolves før den fortsetter.
@@ -102,30 +131,30 @@ bokser som inneholder medlemsinformasjon
         )
       ).then(() => {
         drawHwrTable();
-        draw();
+        drawCanvas();
       });
-      const lineStart = 100;
-      const lineEnd = 500;
+      const lineStart = 250;
+      const lineEnd = 750;
 
-      const drawCirles = (value, y, name, textOnTop, color, ctx) => {
+      const drawCirles = (value, y, name, textOnTop, color, ctx) => {     // drawing circles on canvas board
         var circle = new Path2D();
         const posX = lineStart + value * 4;
-        circle.arc(posX, y, 5, 0, 2 * Math.PI);
+        circle.arc(posX, y, 7, 0, 2 * Math.PI);
         ctx.fillStyle = color;
         ctx.fill(circle);
         ctx.font = "12px Roboto";
         ctx.fillStyle = color;
         ctx.textAlign = "center";
-        const textPosY = textOnTop ? y + 17 : y - 10;
+        const textPosY = textOnTop ? y + 20 : y - 15;           // position of text on top of circle
         ctx.fillText(name, posX - 2, textPosY);
       };
 
-      const drawLine = (y, startLabel, endLabel, ctx) => {
+      const drawLine = (y, startLabel, endLabel, ctx) => {      // draw line from x-y on board
         ctx.beginPath();
         ctx.moveTo(lineStart, y); // linjepunkt på x akse
         ctx.lineTo(lineEnd, y); // linjepunkt på y akse
         ctx.lineWidth = 4;
-        ctx.strokeStyle = "white"; // endret fra fillstyle til strokestyle
+        ctx.strokeStyle = "white";
 
         ctx.font = "15px Roboto";
         ctx.fillStyle = "white";
@@ -138,21 +167,35 @@ bokser som inneholder medlemsinformasjon
         ctx.fillText(endLabel, lineStart - 10, y);
         ctx.stroke();
       };
-      function draw() {
+
+      const words = (ctx) => {
+        ctx.font = "25px Roboto";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText("Slider data");
+      }
+
+      function drawCanvas() {     // drawing canvas board with lines
         let canvas = document.getElementById("myCanvas");
         if (canvas.getContext) {
           ctx = canvas.getContext("2d");
+
           const earlyBirdLineY = 200;
           const collablLineY = 300;
-          const feedbackLineY = 400
+          const feedbackLineY = 400;
           drawLine(earlyBirdLineY, "Morgenfugl", "Natteravn", ctx);
           drawLine(collablLineY, "Samarbeide","Jobbe alene", ctx);
           drawLine(feedbackLineY, "Pågående feedback","Feedback når ferdig", ctx);
 
 
+
+          // drawLine(motivasjonLineY, "Hvor motivert er du for å jobbe", ctx);
+          // drawLine(SamViljeLineY, "Hvor samarbeidsvillig er du", ctx); -- ekke sikkert denne er no poeng mtp samarbeid/jobb alen
+
+
           let count = 1;
 
-          for (member of data) {
+          for (member of data) {   // looping array data + selecting even and odd objectnumbers for text on circles
             const textOnOp = count % 2 == 0;
             const color = colors[count];
             drawCirles(
@@ -181,11 +224,16 @@ bokser som inneholder medlemsinformasjon
             );
             count++;
           }
+          // text slider data
+          ctx.font = "35px Roboto";
+          ctx.fillStyle = "white";
+          ctx.textAlign = "center";
+          ctx.fillText("Slider data",500,100);
         }
       }
 
 
-      const drawHwrTable = () => {
+      const drawHwrTable = () => {      // draw table with diff setes of data, fetched from data array.
         const html = `<div class="table-overview">
             <h2> Our reports </h2>
                 <table>
@@ -199,6 +247,8 @@ bokser som inneholder medlemsinformasjon
                         <th> Deltakeraktivitet(10)</th>
                         <th> Liker å diskutere(10)</th>
                         <th> Sier ifra om uenig/(10)</th>
+                        <th> Kommunikasjonsmetode</th>
+                        <th> Arbeidsmetode</th>
 
                     </tr>
                     </thead>
@@ -214,7 +264,7 @@ bokser som inneholder medlemsinformasjon
                         ${members.position}
                         </td> 
                         <td> 
-                         ${members.earlybird  }
+                         ${members.earlybird}
                         </td>
         
                         <td>
@@ -237,9 +287,13 @@ bokser som inneholder medlemsinformasjon
                     `
                     )}
                     </table>
-                    <canvas id="myCanvas" width="600" height="1000"></canvas>
+
+                    <h3>Slider data</h3>
+
+                    <canvas id="myCanvas" width="1000" height="800" style="border: 1px solid black"></canvas>
+                    // kan ta bort border, når vi er good på style
                 </div>
-                
+
                 `;
         console.log(html);
         const template = document.createElement("template");
@@ -247,10 +301,5 @@ bokser som inneholder medlemsinformasjon
         document.body.appendChild(template.content.firstChild);
       };
     </script>
-
-    <!--
-        bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json
-                        en del       -           en del
-          -->
   </body>
 </html>
