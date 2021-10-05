@@ -125,12 +125,13 @@ p a:hover {
 .spørsmål {
   font-size: 25px;
 
-.skjema {
-  font-weight: bold;
-}
+  }
 
 .skjema {
   font-size: 25px;
+  font-weight: bold;
+
+}
 
 
 
@@ -169,16 +170,16 @@ p a:hover {
         </h2>
     
         <p><label for="data01"> </label>
-            <input type="text" name="Navn" id="Navn" placeholder="Navn" />
+            <input type="text" name="name" id="name" placeholder="Name" />
         </p>
 
         <p><label for="data02"> </label>
-            <input type="text" name="Stilling" id="Stilling" Placeholder="Stilling" />
+            <input type="text" name="position" id="position" Placeholder="Position" />
         </p>
 
         <br>
 
-        <p class="spørsmål">
+        <p class="questions">
             Spørsmål om samarbeid
         </p>
 
@@ -186,20 +187,20 @@ p a:hover {
 
 
         <p>
-            <label for="Morgenfugl">Morgenfugl</label>
-            <input type="range" id="Morgenfugl" name="Morgenfugl" value="50">
+            <label for="earlybird">Morgenfugl</label>
+            <input type="range" id="earlybird" name="earlybird" value="50">
             <label for="Nattugle">Nattugle</label>
         </p>
 
         <p>
-            <label for="Sammen"> Jobbe med det sammen</label>
-            <input type="range" id="Sammen" name="Sammen" value="50">
+            <label for="together"> Jobbe med det sammen</label>
+            <input type="range" id="together" name="together" value="50">
             <label for="Alene">Jobbe med det alene</label>
         </p>
 
         <p>
             <label for="Pågående tilbakemeldinger">Foretrekker pågående tilbakemeldinger</label>
-            <input type="range" id="Feedback" name="Feedback" value="50">
+            <input type="range" id="feedback" name="feedback" value="50">
             <label for="Tilbakemelding etter">Tilbakemeldinger etter prosjekt eller arbeid</label>
         </p>
 
@@ -211,7 +212,7 @@ p a:hover {
 
         <p>
             <label>Jeg foretrekker å være en aktiv del av prossesen under prosjekter/arbeid:
-                <select name="Del av prosessen">
+                <select name="processes">
                     <option value=0>0</option>
                     <option value="1">1</option>
                     <option value=2>2</option>
@@ -233,7 +234,7 @@ p a:hover {
 
         <p>
             <label>Jeg liker å være aktiv under diskusjon av prosjekter/arbied:
-                <select name="Aktiv under diskusjon">
+                <select name="discussion">
                     <option value=0>0</option>
                     <option value="1">1</option>
                     <option value=2>2</option>
@@ -253,7 +254,7 @@ p a:hover {
 
         <p>
             <label>Hvis jeg er uenig med en kollega, uttaler jeg meg:
-                <select name="Uttaler meg">
+                <select name="exspressive">
                     <option value=0>0</option>
                     <option value="1">1</option>
                     <option value=2>2</option>
