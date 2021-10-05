@@ -14,16 +14,25 @@
         
         
         }
+        /* Background color sier seg selv, display flex
+            gjør slikt at elementene kommer vedsiden av hverandre */
 
-    
+
+
         .Main {
     display:flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     color: white;
     position: relative;
-    left: 25%
+    left: 25%;
+
+    /* align items gjør slikt at du alligner innholdet på midten av main axisen.
+    Flex-direction er måten du dirigerer flexen din på, 
+    vi har valgt kollone som blir displayed nå.
+    Vi har position relative som posisjonert relativt til den normale posisjonen,
+    Her er det lagt på 25% for å få den mer sentralt, vekk fra medlemms boksen.
+    */
 
     
       }
@@ -31,24 +40,26 @@
           width: auto;
           margin: 10px;
           height: 100px;
-          color: white;
           padding: 1%;
-    
-          
-        
 
-    
-          
-
-          
-        
+    /* Menu-Baren som er boksen vår, har width som er bredde.
+    Margin er Marginen fra boksens "vegger" og nettsiden.
+    Height er da høyde/lengde.
+    Paddingen er marginen fra innholdet i boksen til veggene til boksen
+    */
           
       }
+      
+
       .results {
           color: white;
-          position: relative;
-          top: 500px;
+          top: 50%;
           position: absolute;
+
+    /*
+    Top, den er 50% fra toppen av siden, Position absolute er et posisjonen den ble sett
+    ikke følger flexen som ble nevnt i body.
+    */
           
         
 
@@ -60,11 +71,13 @@
 <body>
     <div class="Menu-Bar">
 <p>
-    Medlemmer
-    
+
+    <a href="index.html"> Hovedside
+    </a>
 </p>
 <p>
-    Registreringssliste
+    <a href="hwr-report.html">How-We-Roll Report</a>
+
 </p>
 
     </div>
@@ -88,6 +101,7 @@
         </p>
 
         <p>
+            <label for="Sammen"> Jobbe med det sammen</label>
             <input type="range" id="Sammen" name="Sammen" value="50">
             <label for="Alene">Jobbe med det alene</label>
         </p>
