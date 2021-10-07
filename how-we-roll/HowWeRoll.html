@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbeidsundersøkelse</title>
+    <style>
+
+        body {
+            background-color: #0a1929;
+            display: flex;
+           
+        
+        
+        }
+        /* Background color sier seg selv, display flex
+            gjør slikt at elementene kommer vedsiden av hverandre */
+
+
+
+        .Main {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    position: relative;
+    left: 15%;
+
+    /* align items gjør slikt at du alligner innholdet på midten av main axisen.
+    Flex-direction er måten du dirigerer flexen din på, 
+    vi har valgt kollone som blir displayed nå.
+    Vi har position relative som posisjonert relativt til den normale posisjonen,
+    Her er det lagt på 25% for å få den mer sentralt, vekk fra medlemms boksen.
+    */
+
+    
+      }
+      .Menu-Bar {
+          width: auto;
+          margin: 10px;
+          height: 100px;
+          padding: 1%;
+
+    /* Menu-Baren som er boksen vår, har width som er bredde.
+    Margin er Marginen fra boksens "vegger" og nettsiden.
+    Height er da høyde/lengde.
+    Paddingen er marginen fra innholdet i boksen til veggene til boksen
+    */
+          
+      }
+      
+
+      .results {
+          color: white;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          left: 500px;
+          top: -645px;
+          
+
+    /*
+    Top, den er 50% fra toppen av siden, Position absolute er et posisjonen den ble sett
+    ikke følger flexen som ble nevnt i body.
+    */
+          
+        
+
+         
+      }
+
+      p a {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+p a:hover {
+  color: #0055ff;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.submit {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+  text-align: center;
+  font-size: 17px;
+  padding: 7px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.submit span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.submit span:after {
+  content: '\00bb';
+  position: relative;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.submit:hover span {
+  padding-right: 25px;
+}
+
+.submit:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.questions {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.skjema {
+  font-size: 25px;
+  font-weight: bold;
+
+}
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Her er oppgaven din, Edi. Finn ut:
+    Hvordan man endrer farge på linkene-->
+    <div class="Menu-Bar">
+<p>
+
+    <a href="index.html"> Hovedside
+    </a>
+</p>
+<p>
+    <a href="hwr-report.html">How-We-Roll Report</a>
+
+</p>
+
+    </div>
+    <div class="Main">
+        <h1>Teamwork makes the dream work</h1>
+    <form>
+
+        <br>
+
+        <h2>
+            Fyll ut skjema
+        </h2>
+    
+        <p><label for="data01"> </label>
+            <input type="text" name="name" id="name" placeholder="Name" />
+        </p>
+
+        <p><label for="data02"> </label>
+            <input type="text" name="position" id="position" Placeholder="Position" />
+        </p>
+
+        <br>
+
+        <p class="questions">
+            Spørsmål om samarbeid
+        </p>
+
+
+
+
+        <p>
+            <label for="earlybird">Morgenfugl</label>
+            <input type="range" id="earlybird" name="earlybird" value="50">
+            <label for="Nattugle">Nattugle</label>
+        </p>
+
+        <p>
+            <label>Fra en til ti (en minst, ti størst) Hvor motiver er du til å jobbe:
+                <select name="motivation">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                    <option value=9>9</option>
+                    <option value=10>10</option>
+
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <label for="together"> Jobbe med det sammen</label>
+            <input type="range" id="together" name="together" value="50">
+            <label for="Alene">Jobbe med det alene</label>
+        </p>
+
+
+
+        <p>
+            <label>Fra en til ti (en minst, ti størst) Hvor samarbeidsvillig er du:
+                <select name="coopWill">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                    <option value=9>9</option>
+                    <option value=10>10</option>
+
+                </select>
+            </label>
+        </p>
+
+
+        <p>
+            <label for="feedback">Foretrekker pågående tilbakemeldinger</label>
+            <input type="range" id="feedback" name="feedback" value="50">
+            <label for="Tilbakemelding etter">Tilbakemeldinger etter prosjekt eller arbeid</label>
+        </p>
+
+        <br>
+
+        <p>
+            <label>Jeg foretrekker å være en aktiv del av prossesen under prosjekter/arbeid:
+                <select name="processes">
+                    <option value="Svært uenig">Svært uenig</option>
+                    <option value="Litt uenig">Litt uenig</option>
+                    <option value="Nøytral">Nøytral</option>
+                    <option value="Noe enig">Noe enig</option>
+                    <option value="Meget enig">Meget enig</option>
+
+
+                </select>
+            </label>
+        </p>
+    <!--Satt inn spørsmål med nummerverdier fra 0-10. Brukte <p> for å lage paragraf,
+    <label> for teksten som skal vises og satte opp option for hver value fra 0-10-->
+
+        <p>
+            <label>Jeg liker å være aktiv under diskusjon av prosjekter/arbied:
+                <select name="discussion">
+                    <option value="Svært uenig">Svært uenig</option>
+                    <option value="Litt uenig">Litt uenig</option>
+                    <option value="Nøytral">Nøytral</option>
+                    <option value="Noe enig">Noe enig</option>
+                    <option value="Meget enig">Meget enig</option>
+
+
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <label>Hvis jeg er uenig med en kollega, uttaler jeg meg:
+                <select name="expressive">
+                    <option value="Svært uenig">Svært uenig</option>
+                    <option value="Litt uenig">Litt uenig</option>
+                    <option value="Nøytral">Nøytral</option>
+                    <option value="Noe enig">Noe enig</option>
+                    <option value="Meget enig">Meget enig</option>
+
+
+
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <label> Hvilken av disse kommunikasjonsmetodene funker best for deg:
+                <select name="comMeth">
+                    <option value="Videochat">Videochat</option>
+                    <option value="Text"">Text</option>
+
+                </select>
+            </label>
+        </p>
+
+        <p>
+            <label> Hvilken av disse metodene funker best for deg:
+                <select name="workHour">
+                    <option value="Jobbe når som helst">Jobbe når som helst</option>
+                    <option value="Jobbe kun i skoletiden">Jobbe kun i skoletid</option>
+
+                </select>
+            </label>
+        </p>
+
+
+
+
+
+
+
+
+
+
+        <button class="submit" style="vertical-align:middle"><span>Submit </span></button>
+
+        <!--Lagde submit knapp og fant en passende style. Class="submit" er for å kunne style
+        med css, "vertical-align:middle" er for å plassere den riktig i forhold til spørsmålene.
+        Span er for hva som står på button.-->
+
+    </form>
+    <div class="results">
+        <h2>Form data</h2>
+        <pre></pre>
+
+
+    </div>
+    
+<script> 
+        // From https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch (seen 2021-09-27)
+        // Example POST method implementation using fetch:
+        async function postData(url = '', data = {})
+        {
+            // Default options are marked with *
+        const response = await fetch(url, {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache,only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer,*no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: JSON.stringify(data) // body data type must match"Content-Type"header
+            });
+        return response.json(); // parses JSON response into native JavaScriptobjects
+        }
+
+            function handleSubmit(event) {
+                event.preventDefault();
+                const data = new FormData(event.target);
+                const formJSON = Object.fromEntries(data.entries());
+                const results = document.querySelector('.results pre');
+                postData('https://bacit.info/', formJSON)
+                    .then(data => {
+                    results.innerText = JSON.stringify(data, null, 2);
+                    });
+            }
+            const form = document.querySelector('form');
+            form.addEventListener('submit', handleSubmit);
+        </script>
+    
+</body>
+
+</html>
