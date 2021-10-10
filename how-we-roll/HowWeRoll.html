@@ -84,7 +84,7 @@ p a:hover {
 
 .submit {
   display: inline-block;
-  border-radius: 4px;
+  border-radius: 15px;
   background-color: #ffffff;
   border: none;
   color: #000000;
@@ -94,7 +94,7 @@ p a:hover {
   width: 150px;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
+  margin: 5px;.
 }
 
 .submit span {
@@ -144,9 +144,6 @@ p a:hover {
     </style>
 </head>
 <body>
-
-    <!-- Her er oppgaven din, Edi. Finn ut:
-    Hvordan man endrer farge på linkene-->
     <div class="Menu-Bar">
 <p>
 
@@ -260,8 +257,8 @@ p a:hover {
                 </select>
             </label>
         </p>
-    <!--Satt inn spørsmål med nummerverdier fra 0-10. Brukte <p> for å lage paragraf,
-    <label> for teksten som skal vises og satte opp option for hver value fra 0-10-->
+    <!--Satt inn spørsmål med flere alternativer. Brukte <p> for å lage paragraf,
+    <label> for teksten som skal vises og satte opp option for hver value som tilsvarer alternativene-->
 
         <p>
             <label>Jeg liker å være aktiv under diskusjon av prosjekter/arbied:
@@ -296,7 +293,7 @@ p a:hover {
             <label> Hvilken av disse kommunikasjonsmetodene funker best for deg:
                 <select name="comMeth">
                     <option value="Videochat">Videochat</option>
-                    <option value="Text"">Text</option>
+                    <option value="Text"">Text</option>git s
 
                 </select>
             </label>
@@ -321,9 +318,9 @@ p a:hover {
 
 
 
-        <button class="submit" style="vertical-align:middle"><span>Submit </span></button>
+        <button class="submit" style="vertical-align:middle;"><span>Submit </span></button>
 
-        <!--Lagde submit knapp og fant en passende style. Class="submit" er for å kunne style
+        <!--Lagde submit knapp og fant en passende style. Class="submit" er definisjonen for å kunne style
         med css, "vertical-align:middle" er for å plassere den riktig i forhold til spørsmålene.
         Span er for hva som står på button.-->
     
@@ -350,7 +347,7 @@ p a:hover {
                 headers: {
                     'Content-Type': 'application/json',
                     // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
+    .-.            },
                 redirect: 'follow', // manual, *follow, error
                 referrerPolicy: 'no-referrer', // no-referrer,*no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
                 body: JSON.stringify(data) // body data type must match"Content-Type"header
