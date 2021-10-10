@@ -28,7 +28,7 @@ Fordelingen av arbeid i prosjektoppgaven har vært ganske effektiv og løsningso
  Tobias  |    Utvikle HWR rapportside   |  hwr-report.html
 
 ## Hvordan jobbet vi?
-Måten vi startet med oppgaven var å be hele gruppen om å sette seg inn i HTML og CSS. Vi satt deadlines på når alle medlemmene måtte ha tatt initiativ til å lære seg det grunnleggende. Deretter satt vi oss sammen og lagde mockup til hvordan sidene skulle se ut. Her er et eksempel av vårt første utdrag, før vi hadde begynt å kode:
+Måten vi startet med oppgaven var å be hele gruppen om å sette seg inn i HTML og CSS. Vi satt deadlines på når alle medlemmene måtte ha tatt initiativ til å lære seg det grunnleggende. Deretter satt vi oss sammen og lagde mockup til hvordan sidene skulle se ut. Her er et eksempel av vårt første utdrag, før vi hadde begynt å kode:\
 ![Mockup](https://media.discordapp.net/attachments/881861898340007966/889872086372343818/unknown.png)
 
 Vi ble enig om en felles bakgrunnsfarge og tekstfarge som alle sidene skulle brukes, og vi holdt oss til dette under utviklingen av nettsiden. Når vi hadde blitt enig om design så delte vi inn i tre grupper, en for hver side som skulle bli laget. Vi drev da med parprogrammering og fordelte oppgaver innenfor gruppen slik det passet. 
