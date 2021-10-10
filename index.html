@@ -14,33 +14,34 @@
             display: flex;
             justify-content: center;
         }
+        .menu {
+            padding-right: 250px;
+        }
         .text {
             position: relative;
             top: 40px;
             color:#ffffff;
             font-size: 20px;
-            right: 30px;
+            left: 25%;
+            background-color: transparent;
         }
-
-        .text2 {
-            position:relative;
-            color:#ffffff;
-            font-size: 20px;
-            top: 70px;
-            right: 100px;
-        }
-
+        .text:hover {
+            color: #0055ff;
+            background-color: transparent;
+            text-decoration: underline;
+            }
         .flex-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            display: flex;
             gap: 10px 2em;
+            flex-wrap: wrap;
+  
         }
-        .box1 {
+        .card {
             position: relative;
             border: 2px solid white;
-            margin: 50px;
-            height: 300px;
-            width: 250px;
+            min-width: 100px;
+            min-height: 115px;
+
             padding: 5px;
             background: #2a82b5;
         }
@@ -48,62 +49,66 @@
             position: relative;
             left: 5px;
             top: 5px;
-            width: 26%;
-            height: 25%px;
             border-radius: 90%;
+            width: 50px;
+            height: 100px;
             margin: 5px;
         }
     </style>
 </head>
 <body>
     <!--Linkene til de andre sidene-->
-    <a href="register.html" class="text">Register</a>
-    <a href="members.html" class="text2">Members</a>
+    <div class="menu">
+        <a href="HowWeRoll.html" class="text">Registering</a>
+        <br/>
+        <a href="hwr-report.html" class="text ">How We Roll Rapport</a>
+    </div>
+
     <!--Flex-container brukt for å plassere boksene på en enkel måte-->
     <div class="flex-container">
-        <div class="box1">
+        <div class="card">
             <img class="img1" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/s206x206/244264309_575497440163177_8520767328187384690_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=aee45a&_nc_ohc=Vc8bvLV55EkAX_A2Vrq&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=66d6be7d12a4c8cc0da2c77607c3a75f&oe=6184FD8D" alt="Joakim Kleveland">
             <h4 style="color: white;">Joakim Kleveland</h4>
             <h4 style="color: white;">19 år</h4>
             <h4 style="color: white;">Fra Mandal</h4>
             <a style="color: white;" href="https://github.com/Joakimkleveland" class="githubkonto">Github bruker</a>
         </div>
-        <div class="box1">
+        <div class="card">
             <img class="img1" src="https://scontent.fosl3-1.fna.fbcdn.net/v/t1.15752-9/244650743_403253601418416_5788192427888245156_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_ohc=qrvCAPmQa1EAX9CNd-n&_nc_ht=scontent.fosl3-1.fna&oh=a9a81181b7c388a3de4905566a9cb793&oe=6184EA9C" alt="Paal Folmer Jahren">
             <h4 style="color: white;">Paal Folmer Jahren</h4>
             <h4 style="color: white;">24 år</h4>
             <h4 style="color: white;">Fra Eidsvoll</h4>
             <a style="color: white;" href="https://github.com/PaalFJ" class="githubkonto">Github bruker</a>
         </div>
-        <div class="box1">
+        <div class="card">
             <img class="img1" src="https://scontent.fosl3-2.fna.fbcdn.net/v/t1.15752-9/s280x280/244161169_391902045739325_2374659469584466754_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=aee45a&_nc_ohc=mqkpjGPKCwgAX91dO_Y&_nc_ht=scontent.fosl3-2.fna&oh=d6aeb087f60886fb08fea60805f5ed72&oe=618287C3" alt="Markus Johansen">
             <h4 style="color: white;">Markus Johansen</h4>
             <h4 style="color: white;">21 år</h4>
             <h4 style="color: white;">Fra Gulset</h4>
             <a style="color: white;" href="https://github.com/MarkusYohandsome" class="githubkonto">Github bruker</a>
         </div>
-        <div class="box1">
+        <div class="card">
             <img class="img1" src="https://scontent.fosl3-1.fna.fbcdn.net/v/t1.15752-9/244184609_470695614026949_6373032535945014955_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=iqCs45VpNpwAX-XQUES&_nc_ht=scontent.fosl3-1.fna&oh=64dfb79ab6cfc7bb0a7de3fe609b567e&oe=61848441" alt="Fredrik Aspelien">
             <h4 style="color: white">Fredrik Aspelien</h4>
             <h4 style="color: white;">25 år</h4>
             <h4 style="color: white;">Fra Oslo</h4>
             <a style="color: white;" href="https://github.com/GitFA96" class="githubkonto">Github bruker</a>
         </div>
-        <div class="box1">
+        <div class="card">
             <img class="img1" src="https://scontent.fosl3-2.fna.fbcdn.net/v/t1.15752-9/p1080x2048/243263820_417946716434400_3625897336155882688_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=463rwouwzpUAX8Y0vtl&_nc_ht=scontent.fosl3-2.fna&oh=541c9ca06ee9458dc1e7420ab8ebf12e&oe=61847D7A" alt="Edi Grajcevci">
             <h4 style="color: white">Edi Grajcevci</h4>
             <h4 style="color: white;">20 år</h4>
             <h4 style="color: white;">Fra Porsgrunn</h4>
             <a style="color: white;" href="https://github.com/Edi-G" class="githubkonto">Github bruker</a>
         </div>
-        <div class="box1">
+        <div class="card">
             <img class="img1" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/s280x280/244480280_889086405335352_853858328086739998_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=aee45a&_nc_ohc=i5Lfn1AbY9wAX_tls2s&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=a7154bd30f2cad6cf640b87e9603be32&oe=6183F7B3" alt="Shlirim Balaj">
             <h4 style="color: white">Shlirim Balaj</h4>
             <h4 style="color: white;">19 år</h4>
             <h4 style="color: white;">Fra Kristiansand</h4>
             <a style="color: white;" href="https://github.com/Shlimb" class="githubkonto">Github bruker</a>
         </div>
-        <div class="box1">
+        <div class="card">
             <img class="img1" src="https://scontent.fosl3-2.fna.fbcdn.net/v/t1.15752-9/244171825_1018415958995739_7633639366573268571_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=NrssrxXMCaUAX_M6fGg&_nc_ht=scontent.fosl3-2.fna&oh=0754d03642acbf94f2681a6157ad854e&oe=6181A5CF" alt="Tobias Kroknes">
             <h4 style="color: white">Tobias Kroknes</h4>
             <h4 style="color: white;">20 år</h4>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How We Roll - Rapport</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+      body {
+        background-color: #0a1929;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h2 {
+        color: white;
+        font-family: Roboto, "sans-serif";
+      }
+      h3 {
+        color: white;
+        font-size: 200%;
+        font-family: Roboto;
+      }
+      .menu {
+        position: relative;
+        right: 40%;
+      }
+      .menu a {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      .menu a:hover {
+        color: #0055ff;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+      .table-overview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px #009879;
+      }
+      table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+      }
+      table th,
+      table td {
+        padding: 12px 15px;
+        color: white;
+      }
+      table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+
+      table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>How We Roll Report</h1>
+
+    <div class="menu">
+      <a href="index.html">Hovedside</a>
+      <br />
+      <a href="HowWeRoll.html">Registrering</a>
+    </div>
+
+    <script>
+      // Colors to use when generating circles for visual representation of data
+      const colors = [
+        "#26fcd5",
+        "#fc21ea",
+        "#80FF00",
+        "#fc9a0f",
+        "#FF0000",
+        "#eddc1a",
+        "#FF7575",
+        "#84ff00",
+        "#cb1ed4",
+        "#21becc",
+      ];
+      const data = []; // JSON objects will be pushed into this array.
+
+      // Links to fetch data from.
+      const links = [
+        "https://bacit.info/hwr/20211007164933-65f274f69e0ac579b68e1108a4a195c6.json", // Pål
+        "https://bacit.info/hwr/20211007165049-9d7a12645b345496ad109d319a3bbdfa.json", // Markus
+        "https://bacit.info/hwr/20211007165127-ef5c4e1e204da280009517c99164345a.json", // Fredrik
+        "https://bacit.info/hwr/20211007165212-f19d1bea435796b7854292eacbcfd7e7.json", // Tobias
+        "https://bacit.info/hwr/20211007165331-853beaef0964f9f0424fba8581b9a32e.json", // Joakim
+        "https://bacit.info/hwr/20211007165428-12588df2fee696d5d8930c728776e516.json", // Shlirim
+        "https://bacit.info/hwr/20211007165252-8d00f8e3f994a12c2e12a4a8fc07c9ef.json", // Edi
+      ];
+      // Promise.all waits for all the promises in fetch to resolve before it continues. We can then use .then()
+      // to access the data retrieved from the fetched values.
+      Promise.all(
+        links.map(
+          (link) =>
+            fetch(link)
+              .then((res) => res.json())
+              .then((res) => data.push(res)) // Push the JSON object into data array.
+        )
+      )
+        .then(() => {
+          // Call functions to populate the page.
+          drawHwrTable();
+          drawCanvas();
+        })
+        .catch((err) => {
+          alert("Feil under datainnhenting. ERR:" + err);
+        });
+
+      // Constants for line lenghts.
+      const lineStart = 250;
+      const lineEnd = 750;
+
+      /**
+       * Draws the circles to represent each members registered values.
+       * It also draws the members name either below or above the circle.
+       *
+       *
+       * @param {number}    value                 The value that the user registered.
+       * @param {number}    y                     The Y axis value to place the cirle on.
+       * @param {boolean}   textOnTop             Determines if the name text should be placed above or below the circle.
+       * @param {text}      color                 The color of the circle and name text.
+       * @param {number}    positionMultiplier    Multiplier number to calculate the X axis position of the circle.
+       * @param {object}    ctx                   The canvas context object.
+       * */
+      const drawCirles = (
+        value,
+        y,
+        name,
+        textOnTop,
+        color,
+        positionMultiplier,
+        ctx
+      ) => {
+        // drawing circles on canvas board
+        var circle = new Path2D();
+        const posX = lineStart + value * positionMultiplier;
+        circle.arc(posX, y, 7, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill(circle);
+        ctx.font = "12px Roboto";
+        ctx.fillStyle = color;
+        ctx.textAlign = "center";
+        const textPosY = textOnTop ? y + 20 : y - 15; // set Y value of text depending on textOnTop value
+        ctx.fillText(name, posX - 2, textPosY);
+      };
+
+      /**
+       * Draws lines on the canvas
+       *
+       * @param {number}  y               The Y axsis value to place the line on.
+       * @param {text}    startLabel      The text that will be placed at the start of the line.
+       * @param {text}    endLabel        The text that will be placed at the end of the line.
+       * @param {object}  ctx             The canvas context object.
+       * */
+      const drawLine = (y, startLabel, endLabel, ctx) => {
+        // draw line from x-y on board
+        ctx.beginPath();
+        ctx.moveTo(lineStart, y); // X axis
+        ctx.lineTo(lineEnd, y); // Y axis
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = "white";
+        ctx.font = "15px Roboto";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "start";
+        ctx.fillText(startLabel, lineEnd + 10, y);
+        ctx.textAlign = "end";
+        ctx.fillText(endLabel, lineStart - 10, y);
+        ctx.stroke();
+      };
+
+      /**
+       * Draws the entire canvas, including all lines and circles to visualize registerd data.
+       *  */
+
+      function drawCanvas() {
+        // drawing canvas board with lines
+        let canvas = document.getElementById("myCanvas");
+        if (canvas.getContext) {
+          ctx = canvas.getContext("2d");
+
+          // Y axis positions of lines within the canvas
+          const earlyBirdLineY = 100;
+          const collablLineY = 200;
+          const feedbackLineY = 300;
+          const motivastionLineY = 400;
+          const coopWillLineY = 500;
+
+          // Draw the lines for each of the slider data questions
+          drawLine(earlyBirdLineY, "Morgenfugl", "Natteravn", ctx);
+          drawLine(collablLineY, "Samarbeide", "Jobbe alene", ctx);
+          drawLine(
+            feedbackLineY,
+            "Pågående feedback",
+            "Feedback når ferdig",
+            ctx
+          );
+          drawLine(motivastionLineY, "100", "Hvor motivert er du? 0", ctx);
+          drawLine(coopWillLineY, "100", "hvor samarbeidsvillig er du? 0", ctx);
+
+          let counter = 0;
+
+          for (member of data) {
+            // Caculate if the member name text should be placed above or beloe the circle
+            // by checking if $count is an even number. If even, it will be placed on top.
+            // This is not the best way to do it as there will still be some overlapping of text.
+            const textOnOp = counter % 2 == 0;
+            // Select the color from the color array by using the value of count.
+            const color = colors[counter];
+
+            // Draw circles.
+            drawCirles(
+              member.earlybird,
+              earlyBirdLineY,
+              member.name,
+              textOnOp,
+              color,
+              5,
+              ctx
+            );
+            drawCirles(
+              member.together,
+              collablLineY,
+              member.name,
+              textOnOp,
+              color,
+              5,
+              ctx
+            );
+            drawCirles(
+              member.feedback,
+              feedbackLineY,
+              member.name,
+              textOnOp,
+              color,
+              5,
+              ctx
+            );
+            drawCirles(
+              member.motivation,
+              motivastionLineY,
+              member.name,
+              textOnOp,
+              color,
+              50,
+              ctx
+            );
+            drawCirles(
+              member.coopWill,
+              coopWillLineY,
+              member.name,
+              textOnOp,
+              color,
+              50,
+              ctx
+            );
+            // Increment counter for each member.
+            counter++;
+          }
+        }
+      }
+
+      /**
+       * Creates an HTML table and maps the data to table rows.
+       *
+       * */
+      const drawHwrTable = () => {
+        // draw table with diff sets of data, fetched from data array.
+        const html = `<div class="table-overview">
+            <h2> Vår rapport </h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th> Navn </th>
+                        <th> Stilling </th>
+                        <th> Aktiv deltakende</th>
+                        <th> Liker å diskutere</th>
+                        <th> Sier ifra om uenig</th>
+                        <th> Kommunikasjonsmetode</th>
+                        <th> Foretrekkende samarbeidstid</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    ${data.map(
+                      (members) => `
+                    <tr>
+                    
+                        <td> 
+                         ${members.name}
+                        </td>
+                        <td>
+                        ${members.position}
+                        </td>
+                        <td>
+                            ${members.processes}
+                        </td>
+                        <td>
+                            ${members.discussion}
+                        </td>
+                        <td>
+                            ${members.expressive}
+                        </td>
+                        <td>
+                            ${members.comMeth}
+                        </td>
+                        <td>
+                            ${members.workHour}
+                        </td>
+                    </tr>
+                    </tbody>
+                    `
+                    )}
+                    </table>
+
+                    <h3>Slider data</h2>
+
+                    <canvas id="myCanvas" width="1000" height="800"/>
+
+                </div>
+
+                `;
+        const template = document.createElement("template");
+        template.innerHTML = html;
+        document.body.appendChild(template.content.firstChild);
+      };
+    </script>
+  </body>
+</html>
