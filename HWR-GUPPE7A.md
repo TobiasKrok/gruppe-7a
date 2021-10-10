@@ -67,7 +67,7 @@ Vi tok inspirasjon fra den visuelle delen av “slider data” fra “How-we-rol
 
 Vi brukte inspirasjon til kode fra både W3Schools og Developer.mozilla sine læringsplattformer. 
 
-### Kilder til JS
+### Kilder til kode
 (1)https://automatticp2demo.wordpress.com/about-team-p2/how-we-roll/  (sist sett 09.10.21)  
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial (sist sett 09.10.21)  
 https://www.w3schools.com/html/html5_canvas.asp (sist sett 09.10.21)  
