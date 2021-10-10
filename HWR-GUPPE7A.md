@@ -4,7 +4,7 @@
  - [x] Utviklet How We Roll nettside for Gruppe 7A
  - [x] Opprettet Github Pages environment til [How We Roll](https://tobiaskrok.github.io/gruppe-7a/)
  - [x] Fulført alle tasks i [Projects](https://github.com/TobiasKrok/gruppe-7a/projects/1)
- - [x] Skrevet dokumenter 
+ - [x] Skrevet dokumentasjon 
 
 
 ## Organisering 
