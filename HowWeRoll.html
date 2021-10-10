@@ -56,13 +56,13 @@
           display: flex;
           flex-direction: column;
           position: relative;
-          left: 500px;
-          top: -645px;
+          left: 300px;
+          top: 100px;
           
 
     /*
     Top, den er 50% fra toppen av siden, Position absolute er et posisjonen den ble sett
-    ikke følger flexen som ble nevnt i body.
+    ikke følger flexen som ble nevnt i bodyen.
     */
           
         
@@ -84,7 +84,7 @@ p a:hover {
 
 .submit {
   display: inline-block;
-  border-radius: 4px;
+  border-radius: 15px;
   background-color: #ffffff;
   border: none;
   color: #000000;
@@ -144,9 +144,6 @@ p a:hover {
     </style>
 </head>
 <body>
-
-    <!-- Her er oppgaven din, Edi. Finn ut:
-    Hvordan man endrer farge på linkene-->
     <div class="Menu-Bar">
 <p>
 
@@ -169,11 +166,11 @@ p a:hover {
             Fyll ut skjema
         </h2>
     
-        <p><label for="data01"> </label>
+        <p><label for="name"> </label>
             <input type="text" name="name" id="name" placeholder="Name" />
         </p>
 
-        <p><label for="data02"> </label>
+        <p><label for="position"> </label>
             <input type="text" name="position" id="position" Placeholder="Position" />
         </p>
 
@@ -189,7 +186,7 @@ p a:hover {
         <p>
             <label for="earlybird">Morgenfugl</label>
             <input type="range" id="earlybird" name="earlybird" value="50">
-            <label for="Nattugle">Nattugle</label>
+            <label for="earlybird">Nattugle</label>
         </p>
 
         <p>
@@ -214,7 +211,7 @@ p a:hover {
         <p>
             <label for="together"> Jobbe med det sammen</label>
             <input type="range" id="together" name="together" value="50">
-            <label for="Alene">Jobbe med det alene</label>
+            <label for="together">Jobbe med det alene</label>
         </p>
 
 
@@ -242,7 +239,7 @@ p a:hover {
         <p>
             <label for="feedback">Foretrekker pågående tilbakemeldinger</label>
             <input type="range" id="feedback" name="feedback" value="50">
-            <label for="Tilbakemelding etter">Tilbakemeldinger etter prosjekt eller arbeid</label>
+            <label for="feedback">Tilbakemeldinger etter prosjekt eller arbeid</label>
         </p>
 
         <br>
@@ -260,8 +257,8 @@ p a:hover {
                 </select>
             </label>
         </p>
-    <!--Satt inn spørsmål med nummerverdier fra 0-10. Brukte <p> for å lage paragraf,
-    <label> for teksten som skal vises og satte opp option for hver value fra 0-10-->
+    <!--Satt inn spørsmål med flere alternativer. Brukte <p> for å lage paragraf,
+    <label> for teksten som skal vises og satte opp option for hver value som tilsvarer alternativene-->
 
         <p>
             <label>Jeg liker å være aktiv under diskusjon av prosjekter/arbied:
@@ -296,7 +293,11 @@ p a:hover {
             <label> Hvilken av disse kommunikasjonsmetodene funker best for deg:
                 <select name="comMeth">
                     <option value="Videochat">Videochat</option>
+<<<<<<< HEAD:how-we-roll/HowWeRoll.html
+                    <option value="Text">Text</option>git s
+=======
                     <option value="Text">Text</option>
+>>>>>>> 7cb5a3c6d4b2b8714e2522411c2f2f36d71bdf23:HowWeRoll.html
 
                 </select>
             </label>
@@ -321,13 +322,14 @@ p a:hover {
 
 
 
-        <button class="submit" style="vertical-align:middle"><span>Submit </span></button>
+        <button class="submit" style="vertical-align:middle;"><span>Submit </span></button>
 
-        <!--Lagde submit knapp og fant en passende style. Class="submit" er for å kunne style
+        <!--Lagde submit knapp og fant en passende style. Class="submit" er definisjonen for å kunne style
         med css, "vertical-align:middle" er for å plassere den riktig i forhold til spørsmålene.
         Span er for hva som står på button.-->
-
+    
     </form>
+    </div>
     <div class="results">
         <h2>Form data</h2>
         <pre></pre>
@@ -349,7 +351,7 @@ p a:hover {
                 headers: {
                     'Content-Type': 'application/json',
                     // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
+               },
                 redirect: 'follow', // manual, *follow, error
                 referrerPolicy: 'no-referrer', // no-referrer,*no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
                 body: JSON.stringify(data) // body data type must match"Content-Type"header
@@ -372,5 +374,4 @@ p a:hover {
         </script>
     
 </body>
-
 </html>
