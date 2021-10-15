@@ -1,5 +1,6 @@
 body {
     font-family: sans-serif;
+    background-color: salmon;
 }
 
 
@@ -15,9 +16,7 @@ body {
     
 }
 
-.main {
-    border: 5px solid white;
-    ;
+.head {
     height: 10vh;
     color: white;
     background-color: 	#0000FF;
@@ -29,7 +28,7 @@ body {
     height: 30vh;
     width: 350px;
     margin: auto;
-    position: absolute center;
+    position:absolute center;
     margin-top: 20vh;
 }
 
@@ -82,3 +81,17 @@ body {
     .sidenav a {font-size: 18px;}
 }
 
+input[type=text] {
+    width: 70px;
+    height: 20px;
+    margin-left: 50px;
+    margin-top: 0px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100px;
+    height: 25px;
+}
