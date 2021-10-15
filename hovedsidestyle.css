@@ -1,43 +1,36 @@
-body {
-    font-family: sans-serif;
-    background-color: salmon;
+* {
+    margin: 0;
 }
 
-
-
-.container {
-    border: 10px solid white;
-    margin: auto;
-    max-width: 450px;
-    height: 90vh;
-    width: 40%;
-    background-color: #0a1929;
-
-    
+body {
+    font-family: sans-serif;
+    background-color: lightgray;
 }
 
 .head {
-    height: 10vh;
+
+    margin: 0;
+    padding: 0;
+    height: 7vh;
     color: white;
     background-color: 	#0000FF;
     
 }
 
-.info {
-    border: 5px solid white;
-    height: 30vh;
-    width: 350px;
-    margin: auto;
-    position:absolute center;
-    margin-top: 20vh;
-}
-
-.login {
+.aboutus {
     border: 5px solid white;
     height: 10vh;
     width: 150px;
-    bottom: 70px;
-    margin-left: 100px;
+    margin: 75px;
+    margin-top: 20vh;
+}
+
+.loginout {
+    border: 5px solid white;
+    height: 5vh;
+    width: 80px;
+    bottom: 350px;
+    margin: 75px;
     position: absolute;
 }
     
@@ -48,7 +41,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #dddddd;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -84,14 +77,14 @@ body {
 input[type=text] {
     width: 70px;
     height: 20px;
-    margin-left: 50px;
-    margin-top: 0px;
+    margin-left: -10px;
+    padding-top: 5px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
 
-/* When the input field gets focus, change its width to 100% */
+/* When the input field gets focus, change its width */
 input[type=text]:focus {
-    width: 100px;
-    height: 25px;
+    width: 85px;
+    height: 30px;
 }
