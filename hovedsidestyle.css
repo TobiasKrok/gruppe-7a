@@ -18,7 +18,9 @@ body {
 .main {
     border: 5px solid white;
     ;
-    height: 15vh;
+    height: 10vh;
+    color: white;
+    background-color: 	#0000FF;
     
 }
 
@@ -28,7 +30,7 @@ body {
     width: 350px;
     margin: auto;
     position: absolute center;
-    margin-top: 40vh;
+    margin-top: 20vh;
 }
 
 .login {
@@ -40,7 +42,6 @@ body {
     position: absolute;
 }
     
-/*
 .sidenav {
     height: 100%;
     width: 0;
@@ -52,6 +53,7 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+
 }
 
 .sidenav a {
