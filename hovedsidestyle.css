@@ -1,7 +1,46 @@
 body {
-    font-family: "Lato", sans-serif;
+    font-family: sans-serif;
 }
 
+
+
+.container {
+    border: 10px solid white;
+    margin: auto;
+    max-width: 450px;
+    height: 90vh;
+    width: 40%;
+    background-color: #0a1929;
+
+    
+}
+
+.main {
+    border: 5px solid white;
+    ;
+    height: 15vh;
+    
+}
+
+.info {
+    border: 5px solid white;
+    height: 30vh;
+    width: 350px;
+    margin: auto;
+    position: absolute center;
+    margin-top: 40vh;
+}
+
+.login {
+    border: 5px solid white;
+    height: 10vh;
+    width: 150px;
+    bottom: 70px;
+    margin-left: 100px;
+    position: absolute;
+}
+    
+/*
 .sidenav {
     height: 100%;
     width: 0;
