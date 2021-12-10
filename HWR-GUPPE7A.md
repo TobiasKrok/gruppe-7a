@@ -35,11 +35,12 @@ Vi ble enig om en felles bakgrunnsfarge og tekstfarge som alle sidene skulle bru
 Vi forholdt oss til utviklingen av sidene ved å referere til wireframes som vi har utviklet på UXpin. Se bunn av oppgaven for wireframes (1),(2) og (3)*.
 
 ## Github Regler
-Github repositoret ble satt opp med tre hovedregler:
+Github repositoret ble satt opp med fire hovedregler:
 
 1. Kode kan ikke pushes rett til main. Main branch har blitt satt til "protected"
 2. En Pull Request **må** opprettes for å merge kode inn til main.
 3. Pull Requests må gjennomgåes av gruppen før den godkjennes.
+4. Prøv å følg "best-practice" for kode, ref." https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines "
 
 Disse reglene fulgte vi gjennom hele utviklingsprosessen. I Github ble “main” branch satt til en beskyttet branch som betyr at man ikke kan pushe endringer direkte til branchen. For å merge sin kode inn i main branch, må man opprette en Pull Request. En PR må godkjennes av et annet gruppemedlem enn personen som opprettet PR for at den skal kunne merges. Oppsettet vi da brukte var å lage en branch for hver side som skulle lages. Gruppen pushet all sin kode inne i den branchen og inneholdt bare de filene som gruppen trengte å jobbe med. Når vi følte at prosjektet var ferdig, åpnet vi pull requests på alle branchene slik at de kunne merges inn i main branch. Her er et screenshot av siste innspurt av git merges:\
 ![Git merges](https://i.imgur.com/UVPGnXX.png)
